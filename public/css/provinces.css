@@ -1,0 +1,525 @@
+/* ══════════════════════════════════════════
+   PROVINCES.CSS — Styles spécifiques provinces
+   (recherche/filtres/tri/hero désormais dans main.css)
+══════════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   PROVINCES.CSS — Styles page catalogue provinces + fiche province
+   Grille, recherche, filtres région, tri, fiche détaillée
+══════════════════════════════════════════ */
+
+/* ═══ GRILLE PROVINCES ═══ */
+.provinces-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+@media (min-width: 640px) {
+  .provinces-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .provinces-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ═══ CARTE PROVINCE (dans la grille) ═══ */
+.province-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.province-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--vert);
+}
+
+.province-card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.province-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.province-card:hover .province-card-img img {
+  transform: scale(1.1);
+}
+
+.province-card-region-badge {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  z-index: 2;
+}
+
+.province-card-body {
+  padding: var(--sp-5);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.province-card h3 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-1);
+}
+
+.province-card-chef {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.province-card-description {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-4);
+  flex: 1;
+}
+
+.province-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+
+.province-card-stat {
+  text-align: center;
+}
+
+.province-card-stat-value {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--base);
+  color: var(--vert);
+}
+
+.province-card-stat-label {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ═══ CTA SECTION ═══ */
+.provinces-cta-section {
+  padding: var(--sp-12) 0;
+  margin-top: var(--sp-8);
+}
+
+.provinces-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  padding: var(--sp-8);
+  background: linear-gradient(135deg, var(--rouge-light) 0%, var(--bg-alt) 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--rouge);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .provinces-cta {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.provinces-cta-text {
+  flex: 1;
+}
+
+.provinces-cta-text h2 {
+  font-size: var(--2xl);
+  margin-bottom: var(--sp-2);
+}
+
+.provinces-cta-text p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.provinces-cta .btn-primary {
+  background: var(--rouge);
+  border-color: var(--rouge);
+  white-space: nowrap;
+}
+
+.provinces-cta .btn-primary:hover {
+  background: var(--rouge-hover);
+  border-color: var(--rouge-hover);
+}
+
+/* ══════════════════════════════════════════
+   FICHE PROVINCE DÉTAILLÉE (province.html)
+══════════════════════════════════════════ */
+
+/* ═══ HERO PROVINCE ═══ */
+.province-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.province-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1);
+  transition: transform 8s ease;
+}
+
+.province-hero:hover .province-hero-bg {
+  transform: scale(1.15);
+}
+
+.province-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 46, 0.3) 0%,
+    rgba(26, 26, 46, 0.7) 60%,
+    rgba(26, 26, 46, 0.95) 100%
+  );
+}
+
+.province-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: calc(64px + var(--sp-8)) 0 var(--sp-12);
+}
+
+/* Breadcrumb */
+.province-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+  font-size: var(--sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.province-breadcrumb a {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color var(--transition-fast);
+}
+
+.province-breadcrumb a:hover {
+  color: var(--jaune);
+}
+
+.province-breadcrumb span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Meta badges */
+.province-hero-meta {
+  display: flex;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.province-hero-meta .badge {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+/* Titre */
+.province-hero h1 {
+  font-size: clamp(var(--3xl), 5vw, var(--5xl));
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--sp-3);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.province-chef-lieu {
+  font-size: clamp(var(--base), 2vw, var(--xl));
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--sp-6);
+}
+
+/* Actions hero */
+.province-hero-actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.province-hero-actions .btn-ghost {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.province-hero-actions .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+/* ═══ LAYOUT PRINCIPAL ═══ */
+.province-content {
+  padding: var(--sp-8) 0 var(--sp-16);
+}
+
+.province-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+}
+
+@media (min-width: 1024px) {
+  .province-layout {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+/* ═══ STATS GRID ═══ */
+.province-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+
+.province-stat-card {
+  text-align: center;
+  padding: var(--sp-5);
+  background: var(--bg-alt);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all var(--transition-fast);
+}
+
+.province-stat-card:hover {
+  border-color: var(--vert);
+  background: var(--vert-light);
+}
+
+.province-stat-icon {
+  font-size: var(--2xl);
+  margin-bottom: var(--sp-2);
+}
+
+.province-stat-value {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 800;
+  font-size: var(--2xl);
+  color: var(--vert);
+  margin-bottom: var(--sp-1);
+}
+
+.province-stat-label {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ═══ LANGUES & ETHNIES ═══ */
+.langues-ethnies-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+@media (min-width: 640px) {
+  .langues-ethnies-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.langues-ethnies-grid h4 {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--sp-3);
+}
+
+/* ═══ SITES LOCAUX ═══ */
+.sites-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .sites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ═══ SPÉCIALITÉS ═══ */
+.specialites-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .specialites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .specialites-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.specialite-card {
+  padding: var(--sp-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.specialite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--vert);
+}
+
+.specialite-card-icon {
+  font-size: var(--3xl);
+  margin-bottom: var(--sp-3);
+}
+
+.specialite-card h4 {
+  font-size: var(--base);
+  margin-bottom: var(--sp-2);
+  color: var(--vert);
+}
+
+.specialite-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ═══ GALERIE PROVINCE ═══ */
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+
+@media (min-width: 640px) {
+  .galerie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .galerie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ═══ SIDEBAR PROVINCE ═══ */
+.province-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 1024px) {
+  .province-sidebar {
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+}
+
+/* Région parent card */
+.region-parent-card {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--vert-light) 100%);
+}
+
+.region-parent-info {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+.region-parent-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.region-parent-info h4 {
+  font-size: var(--base);
+  margin-bottom: 2px;
+}
+
+.region-parent-info p {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Voisins card */
+.voisins-card .voisin-item {
+  padding: var(--sp-3);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.voisins-card .voisin-item:hover {
+  background: var(--vert-light);
+}
+
+.voisins-card .voisin-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.voisins-card .voisin-item-info h4 {
+  font-size: var(--sm);
+  margin-bottom: 2px;
+}
+
+.voisins-card .voisin-item-info p {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  margin: 0;
+}

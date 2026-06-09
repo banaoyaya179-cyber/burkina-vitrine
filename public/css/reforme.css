@@ -1,0 +1,460 @@
+/* ══════════════════════════════════════════
+   REFORME.CSS — Styles page réforme territoriale
+   Timeline, comparaison 13→17, objectifs, tableau correspondance
+══════════════════════════════════════════ */
+
+/* ═══ PAGE HERO SPÉCIFIQUE ═══ */
+.page-hero-reforme {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--vert-light) 100%);
+}
+
+.page-hero-reforme .page-hero-stat-num {
+  color: var(--vert);
+}
+
+.page-hero-reforme .page-hero-stat-arrow {
+  display: flex;
+  align-items: center;
+  font-size: var(--3xl);
+  color: var(--jaune);
+  font-weight: 700;
+}
+
+/* ═══ PAGE RÉFORME ═══ */
+.reforme-page {
+  padding: var(--sp-8) 0 var(--sp-16);
+}
+
+.reforme-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+}
+
+@media (min-width: 1024px) {
+  .reforme-layout {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+/* ═══ TIMELINE (déjà partiel dans animations.css, complété ici) ═══ */
+.timeline {
+  position: relative;
+  padding-left: var(--sp-8);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--rouge), var(--vert), var(--jaune));
+  border-radius: var(--radius-full);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--sp-8);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--rouge);
+  z-index: 2;
+  transition: all var(--transition);
+}
+
+.timeline-item.vert .timeline-dot {
+  border-color: var(--vert);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 6px var(--rouge-light);
+}
+
+.timeline-date {
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--sm);
+  color: var(--rouge);
+  margin-bottom: var(--sp-1);
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--rouge-light);
+  border-radius: var(--radius-full);
+}
+
+.timeline-item.vert .timeline-date {
+  color: var(--vert);
+  background: var(--vert-light);
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-5);
+  transition: all var(--transition);
+}
+
+.timeline-content:hover {
+  border-color: var(--rouge);
+  box-shadow: var(--shadow);
+  transform: translateX(5px);
+}
+
+.timeline-item.vert .timeline-content:hover {
+  border-color: var(--vert);
+}
+
+.timeline-content h3 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-2);
+}
+
+.timeline-content p {
+  color: var(--text-muted);
+  font-size: var(--sm);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ═══ COMPARAISON 13 → 17 RÉGIONS ═══ */
+.regions-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+@media (min-width: 768px) {
+  .regions-compare-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.regions-liste-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow);
+}
+
+.regions-liste-card h3 {
+  font-size: var(--xl);
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-3);
+  border-bottom: 2px solid var(--border);
+}
+
+.regions-liste-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.regions-liste-card li {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  font-size: var(--sm);
+  color: var(--text);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.regions-liste-card li:hover {
+  background: var(--vert-light);
+  border-color: var(--vert);
+  transform: translateX(5px);
+}
+
+.regions-liste-card li .num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rouge);
+  color: white;
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.regions-liste-card:nth-child(2) li .num {
+  background: var(--vert);
+}
+
+/* ═══ OBJECTIFS ═══ */
+.objectifs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+@media (min-width: 640px) {
+  .objectifs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.objectif-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--sp-6);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.objectif-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rouge), var(--vert), var(--jaune));
+  transition: height var(--transition);
+}
+
+.objectif-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.objectif-card:hover::before {
+  height: 100%;
+  opacity: 0.05;
+}
+
+.objectif-icon {
+  font-size: var(--4xl);
+  margin-bottom: var(--sp-4);
+}
+
+.objectif-card h3 {
+  font-size: var(--xl);
+  margin-bottom: var(--sp-3);
+}
+
+.objectif-card p {
+  color: var(--text-muted);
+  font-size: var(--sm);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ═══ TABLEAU CORRESPONDANCE ═══ */
+.correspondance-table-wrapper {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.correspondance-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.correspondance-table thead th {
+  padding: var(--sp-4) var(--sp-3);
+  text-align: left;
+  font-size: var(--xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--border);
+  background: var(--bg-alt);
+}
+
+.correspondance-table thead th:first-child {
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+.correspondance-table thead th:last-child {
+  border-radius: 0 var(--radius-sm) 0 0;
+}
+
+.correspondance-table tbody td {
+  padding: var(--sp-4) var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--sm);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.correspondance-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.correspondance-table tbody tr:hover td {
+  background: var(--bg-alt);
+}
+
+.correspondance-table .ancien-nom {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.correspondance-table .nouveau-nom {
+  font-weight: 700;
+  color: var(--vert);
+}
+
+.correspondance-table .signification {
+  color: var(--text-muted);
+  font-size: var(--xs);
+  font-style: italic;
+}
+
+.correspondance-table .chef-lieu {
+  font-weight: 600;
+}
+
+/* ═══ CTA RÉFORME ═══ */
+.reforme-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-8);
+  background: linear-gradient(135deg, var(--vert-light) 0%, var(--bg-alt) 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--vert);
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .reforme-cta {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.reforme-cta .btn-primary {
+  background: var(--vert);
+  border-color: var(--vert);
+}
+
+.reforme-cta .btn-primary:hover {
+  background: var(--vert-hover);
+  border-color: var(--vert-hover);
+}
+
+.reforme-cta .btn-outline {
+  border-color: var(--vert);
+  color: var(--vert);
+}
+
+.reforme-cta .btn-outline:hover {
+  background: var(--vert);
+  color: white;
+}
+
+/* ═══ SIDEBAR RÉFORME ═══ */
+.reforme-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 1024px) {
+  .reforme-sidebar {
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+}
+
+/* Stats reforme card */
+.stats-reforme-card {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--jaune-light) 100%);
+}
+
+.stats-reforme-card .stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-reforme-card .stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stats-reforme-card .stat-key {
+  font-size: var(--sm);
+  color: var(--text-muted);
+}
+
+.stats-reforme-card .stat-val {
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--lg);
+  color: var(--rouge);
+}
+
+/* Sources list */
+.sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.sources-list li {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  padding-left: var(--sp-4);
+  position: relative;
+  line-height: 1.5;
+}
+
+.sources-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--rouge);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 767px) {
+  .correspondance-table-wrapper {
+    padding: var(--sp-3);
+  }
+  
+  .regions-liste-card {
+    padding: var(--sp-4);
+  }
+  
+  .objectif-card {
+    padding: var(--sp-4);
+  }
+}

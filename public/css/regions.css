@@ -1,0 +1,180 @@
+/* ══════════════════════════════════════════
+   REGIONS.CSS — Styles spécifiques page régions
+   (recherche/filtres/tri désormais dans main.css)
+══════════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   REGIONS.CSS — Styles page catalogue des 17 régions
+   Grille, recherche, filtres zone, tri
+══════════════════════════════════════════ */
+
+/* ═══ PAGE HERO SPÉCIFIQUE ═══ */
+.page-hero {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--rouge-light) 100%);
+}
+
+/* ═══ GRILLE RÉGIONS ═══ */
+.regions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+@media (min-width: 640px) {
+  .regions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .regions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ═══ CARTE RÉGION (dans la grille) ═══ */
+.region-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.region-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--rouge);
+}
+
+.region-card-img {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.region-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.region-card:hover .region-card-img img {
+  transform: scale(1.1);
+}
+
+.region-card-zone-badge {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  z-index: 2;
+}
+
+.region-card-body {
+  padding: var(--sp-5);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.region-card h3 {
+  font-size: var(--xl);
+  margin-bottom: var(--sp-2);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.region-card-ancien-nom {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.region-card-slogan {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: var(--sp-4);
+  line-height: 1.5;
+}
+
+.region-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+}
+
+.region-card-stat {
+  text-align: center;
+}
+
+.region-card-stat-value {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--lg);
+  color: var(--rouge);
+}
+
+.region-card-stat-label {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ═══ CTA SECTION ═══ */
+.regions-cta-section {
+  padding: var(--sp-12) 0;
+  margin-top: var(--sp-8);
+}
+
+.regions-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  padding: var(--sp-8);
+  background: linear-gradient(135deg, var(--vert-light) 0%, var(--bg-alt) 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--vert);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .regions-cta {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.regions-cta-text {
+  flex: 1;
+}
+
+.regions-cta-text h2 {
+  font-size: var(--2xl);
+  margin-bottom: var(--sp-2);
+}
+
+.regions-cta-text p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.regions-cta .btn-primary {
+  background: var(--vert);
+  border-color: var(--vert);
+  white-space: nowrap;
+}
+
+.regions-cta .btn-primary:hover {
+  background: var(--vert-hover);
+  border-color: var(--vert-hover);
+}

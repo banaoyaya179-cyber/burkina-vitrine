@@ -1,0 +1,477 @@
+/* ══════════════════════════════════════════
+   CARTE.CSS — Styles carte SVG interactive du Burkina Faso
+   Zoom, pan, tooltip, panneau latéral, légende
+══════════════════════════════════════════ */
+
+/* ═══ PAGE HERO SPÉCIFIQUE ═══ */
+.page-hero-carte {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--jaune-light) 100%);
+}
+
+.page-hero-carte .page-hero-stat-num {
+  color: var(--jaune);
+}
+
+/* ═══ LAYOUT CARTE ═══ */
+.carte-page {
+  padding: var(--sp-8) 0 var(--sp-16);
+}
+
+.carte-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+}
+
+@media (min-width: 1024px) {
+  .carte-layout {
+    grid-template-columns: 1fr 360px;
+  }
+}
+
+/* ═══ CONTENEUR CARTE ═══ */
+.carte-container {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.carte-svg-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-alt) 0%, #E8F5E9 50%, var(--bg-alt) 100%);
+  cursor: grab;
+}
+
+.carte-svg-wrapper:active {
+  cursor: grabbing;
+}
+
+.carte-svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s var(--ease);
+  transform-origin: center center;
+}
+
+/* ═══ TOOLTIP ═══ */
+.map-tooltip {
+  position: absolute;
+  z-index: 100;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  box-shadow: var(--shadow-xl);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--transition-fast);
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.map-tooltip.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-tooltip h4 {
+  font-size: var(--base);
+  margin-bottom: var(--sp-2);
+  color: var(--rouge);
+}
+
+.map-tooltip p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+  line-height: 1.4;
+}
+
+.map-tooltip-stats {
+  display: flex;
+  gap: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+}
+
+.map-tooltip-stat {
+  text-align: center;
+}
+
+.map-tooltip-stat-value {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--sm);
+  color: var(--text);
+}
+
+.map-tooltip-stat-label {
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+/* ═══ CONTRÔLES ZOOM ═══ */
+.carte-controls {
+  position: absolute;
+  bottom: var(--sp-4);
+  right: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  z-index: 10;
+}
+
+.carte-ctrl-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: var(--xl);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow);
+}
+
+.carte-ctrl-btn:hover {
+  background: var(--rouge);
+  color: white;
+  border-color: var(--rouge);
+  transform: scale(1.1);
+}
+
+/* ═══ LÉGENDE FLOTTANTE ═══ */
+.carte-legend-float {
+  position: absolute;
+  bottom: var(--sp-4);
+  left: var(--sp-4);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--xs);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+}
+
+/* ═══ PANNEAU LATÉRAL ═══ */
+.carte-panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow);
+}
+
+.carte-panel h3 {
+  font-size: var(--xl);
+  margin-bottom: var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.carte-guide {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-6);
+}
+
+.carte-guide p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+  line-height: 1.5;
+}
+
+.carte-guide p:last-child {
+  margin-bottom: 0;
+}
+
+.carte-guide p strong {
+  color: var(--rouge);
+}
+
+/* Zone legend */
+.carte-zone-legend {
+  margin-bottom: var(--sp-6);
+}
+
+.carte-zone-legend h4 {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--sp-3);
+}
+
+.zone-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--sm);
+  color: var(--text);
+  margin-bottom: var(--sp-2);
+}
+
+.zone-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ═══ RÉGION SÉLECTIONNÉE ═══ */
+.carte-selected {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: var(--sp-5);
+  margin-bottom: var(--sp-6);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carte-selected-placeholder {
+  text-align: center;
+}
+
+.carte-selected-icon {
+  font-size: var(--4xl);
+  margin-bottom: var(--sp-3);
+}
+
+.carte-selected-placeholder p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.carte-selected-content {
+  width: 100%;
+}
+
+.carte-selected-content h4 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-2);
+  color: var(--rouge);
+}
+
+.carte-selected-content p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+  line-height: 1.5;
+}
+
+.carte-selected-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.carte-selected-stat {
+  text-align: center;
+  padding: var(--sp-3);
+  background: var(--card-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.carte-selected-stat-value {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--lg);
+  color: var(--text);
+}
+
+.carte-selected-stat-label {
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+.carte-selected-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--rouge);
+  color: white;
+  border-radius: var(--radius);
+  font-size: var(--sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.carte-selected-link:hover {
+  background: var(--rouge-hover);
+  transform: translateY(-2px);
+}
+
+/* ═══ LIENS RAPIDES ═══ */
+.carte-quick-links h4 {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--sp-3);
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  font-size: var(--sm);
+  color: var(--text);
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border);
+}
+
+.quick-link:hover {
+  background: var(--rouge-light);
+  border-color: var(--rouge);
+  color: var(--rouge);
+  transform: translateY(-2px);
+}
+
+/* ═══ LISTE DES RÉGIONS (section bas) ═══ */
+.carte-liste-section {
+  padding: var(--sp-16) 0;
+  background: var(--bg-alt);
+}
+
+.carte-liste-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .carte-liste-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .carte-liste-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .carte-liste-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.carte-liste-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.carte-liste-item:hover {
+  border-color: var(--rouge);
+  background: var(--rouge-light);
+  transform: translateX(5px);
+}
+
+.carte-liste-item-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.carte-liste-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.carte-liste-item-info h4 {
+  font-size: var(--sm);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carte-liste-item-info p {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══ RESPONSIVE CARTE ═══ */
+@media (max-width: 1023px) {
+  .carte-svg-wrapper {
+    height: 400px;
+  }
+  
+  .carte-controls {
+    bottom: var(--sp-2);
+    right: var(--sp-2);
+  }
+  
+  .carte-ctrl-btn {
+    width: 36px;
+    height: 36px;
+    font-size: var(--lg);
+  }
+  
+  .carte-legend-float {
+    display: none;
+  }
+}

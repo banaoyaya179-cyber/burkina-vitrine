@@ -1,0 +1,122 @@
+/* ══════════════════════════════════════════
+   VARIABLES.CSS — Design System Burkina Faso
+   Couleurs du drapeau + typographie + espacements
+══════════════════════════════════════════ */
+
+:root {
+  /* ═══ DRAPEAU BURKINA FASO ═══ */
+  --rouge: #EF3340;
+  --rouge-hover: #C8222E;
+  --rouge-light: rgba(239, 51, 64, 0.12);
+  --vert: #009639;
+  --vert-hover: #007A2E;
+  --vert-light: rgba(0, 150, 57, 0.12);
+  --jaune: #FCD116;
+  --jaune-light: rgba(252, 209, 22, 0.2);
+  --noir: #1A1A2E;
+  
+  /* ═══ TYPOGRAPHIE ═══ */
+  --font-titre: 'Poppins', sans-serif;
+  --font-corps: 'Outfit', sans-serif;
+  
+  /* ═══ MODE CLAIR (défaut) ═══ */
+  --bg: #FFFFFF;
+  --bg-alt: #F8F9FA;
+  --card-bg: #FFFFFF;
+  --text: #1A1A2E;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  
+  /* ═══ RAYONS ═══ */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  
+  /* ═══ ESPACEMENTS ═══ */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  
+  /* ═══ TAILLES DE TEXTE ═══ */
+  --xs: 0.75rem;    /* 12px */
+  --sm: 0.875rem;   /* 14px */
+  --base: 1rem;     /* 16px */
+  --lg: 1.125rem;   /* 18px */
+  --xl: 1.25rem;    /* 20px */
+  --2xl: 1.5rem;    /* 24px */
+  --3xl: 1.875rem;  /* 30px */
+  --4xl: 2.25rem;   /* 36px */
+  --5xl: 3rem;      /* 48px */
+  --6xl: 3.75rem;   /* 60px */
+  
+  /* ═══ TRANSITIONS ═══ */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-fast: 150ms var(--ease);
+  --transition: 300ms var(--ease);
+  --transition-slow: 500ms var(--ease);
+  
+  /* ═══ CONTAINER ═══ */
+  --container-max: 1280px;
+  --container-padding: var(--sp-4);
+}
+
+/* ═══ MODE SOMBRE ═══ */
+[data-theme="dark"] {
+  --bg: #0F0F1A;
+  --bg-alt: #141425;
+  --card-bg: #1A1A2E;
+  --text: #E5E5E5;
+  --text-muted: #9CA3AF;
+  --border: #2A2A3E;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -2px rgba(0,0,0,0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.4);
+}
+
+/* ═══ RESPONSIVE BREAKPOINTS (variables CSS custom) ═══ */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: var(--sp-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: var(--sp-8);
+  }
+}
+
+/* ═══ BADGES COULEURS ═══ */
+.badge-rouge {
+  background: var(--rouge-light);
+  color: var(--rouge);
+  border: 1px solid var(--rouge);
+}
+
+.badge-vert {
+  background: var(--vert-light);
+  color: var(--vert);
+  border: 1px solid var(--vert);
+}
+
+.badge-jaune {
+  background: var(--jaune-light);
+  color: #B8860B;
+  border: 1px solid var(--jaune);
+}

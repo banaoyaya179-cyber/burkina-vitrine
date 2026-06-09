@@ -1,0 +1,943 @@
+/* ══════════════════════════════════════════
+   REGION.CSS — Styles fiche région détaillée
+   Hero, identité, provinces, richesses, sites, festivals, danses, masques, artisanat, gastronomie, galerie, commentaires, sidebar
+══════════════════════════════════════════ */
+
+/* ═══ HERO RÉGION ═══ */
+.region-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.region-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1);
+  transition: transform 8s ease;
+}
+
+.region-hero:hover .region-hero-bg {
+  transform: scale(1.15);
+}
+
+.region-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 46, 0.3) 0%,
+    rgba(26, 26, 46, 0.7) 60%,
+    rgba(26, 26, 46, 0.95) 100%
+  );
+}
+
+.region-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: calc(64px + var(--sp-8)) 0 var(--sp-12);
+}
+
+/* Breadcrumb */
+.region-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+  font-size: var(--sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.region-breadcrumb a {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color var(--transition-fast);
+}
+
+.region-breadcrumb a:hover {
+  color: var(--jaune);
+}
+
+.region-breadcrumb span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Meta badges */
+.region-hero-meta {
+  display: flex;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.region-hero-meta .badge {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.region-hero-meta .badge-vert {
+  background: rgba(0, 150, 57, 0.3);
+  border-color: var(--vert);
+  color: var(--vert);
+}
+
+/* Titre et slogan */
+.region-hero h1 {
+  font-size: clamp(var(--3xl), 5vw, var(--5xl));
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--sp-3);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.slogan {
+  font-size: clamp(var(--base), 2vw, var(--xl));
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  margin-bottom: var(--sp-6);
+}
+
+/* Actions hero */
+.region-hero-actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.region-hero-actions .btn-outline {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.region-hero-actions .btn-outline:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.region-hero-actions .btn-ghost {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.region-hero-actions .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+/* ═══ LAYOUT PRINCIPAL ═══ */
+.region-content {
+  padding: var(--sp-8) 0 var(--sp-16);
+}
+
+.region-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+}
+
+@media (min-width: 1024px) {
+  .region-layout {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+/* ═══ SECTION BLOCKS ═══ */
+.section-block {
+  margin-bottom: var(--sp-8);
+}
+
+.section-block:last-child {
+  margin-bottom: 0;
+}
+
+.section-block h2 {
+  font-size: var(--2xl);
+  margin-bottom: var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.section-intro {
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+  line-height: 1.6;
+}
+
+/* ═══ IDENTITÉ ═══ */
+.region-description {
+  font-size: var(--lg);
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: var(--sp-6);
+}
+
+.identite-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .identite-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.identite-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: all var(--transition-fast);
+}
+
+.identite-item:hover {
+  border-color: var(--rouge);
+  background: var(--rouge-light);
+}
+
+.identite-icon {
+  font-size: var(--xl);
+  flex-shrink: 0;
+}
+
+.identite-label {
+  display: block;
+  font-size: var(--xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.identite-value {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 700;
+  font-size: var(--base);
+  color: var(--text);
+}
+
+/* ═══ PROVINCES GRID ═══ */
+.provinces-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .provinces-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.province-card {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all var(--transition-fast);
+}
+
+.province-card:hover {
+  border-color: var(--vert);
+  background: var(--vert-light);
+  transform: translateX(5px);
+}
+
+.province-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: var(--vert-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--xl);
+  flex-shrink: 0;
+}
+
+.province-card-info h4 {
+  font-size: var(--base);
+  margin-bottom: 2px;
+}
+
+.province-card-info p {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ═══ RICHESSES GRID ═══ */
+.richesses-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .richesses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .richesses-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.richesse-card {
+  padding: var(--sp-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.richesse-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--rouge);
+}
+
+.richesse-card-icon {
+  font-size: var(--3xl);
+  margin-bottom: var(--sp-3);
+}
+
+.richesse-card h4 {
+  font-size: var(--base);
+  margin-bottom: var(--sp-2);
+  color: var(--rouge);
+}
+
+.richesse-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.richesse-card li {
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--bg-alt);
+  border-radius: var(--radius-full);
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+/* ═══ SITES TOURISTIQUES ═══ */
+.sites-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .sites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sites-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.site-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+
+.site-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--jaune);
+}
+
+.site-card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.site-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.site-card:hover .site-card-img img {
+  transform: scale(1.1);
+}
+
+.site-card-badge {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+}
+
+.site-card-body {
+  padding: var(--sp-4);
+}
+
+.site-card h4 {
+  font-size: var(--base);
+  margin-bottom: var(--sp-2);
+}
+
+.site-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-3);
+}
+
+.site-card-importance {
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--jaune-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--xs);
+  color: #B8860B;
+}
+
+/* ═══ FESTIVALS ═══ */
+.festivals-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .festivals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.festival-card {
+  padding: var(--sp-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--rouge);
+  transition: all var(--transition);
+}
+
+.festival-card:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+.festival-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--sp-3);
+}
+
+.festival-card h4 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-1);
+}
+
+.festival-card-periode {
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--rouge-light);
+  border-radius: var(--radius-full);
+  font-size: var(--xs);
+  color: var(--rouge);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.festival-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-3);
+}
+
+.festival-card-type {
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--bg-alt);
+  border-radius: var(--radius-sm);
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+/* ═══ DANSES ═══ */
+.danses-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .danses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.danse-card {
+  padding: var(--sp-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.danse-card:hover {
+  border-color: var(--vert);
+  background: var(--vert-light);
+}
+
+.danse-card h4 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-2);
+  color: var(--vert);
+}
+
+.danse-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-2);
+}
+
+.danse-card-occasion {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ═══ MASQUES ═══ */
+.masques-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .masques-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.masque-card {
+  padding: var(--sp-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  border-top: 4px solid var(--jaune);
+  transition: all var(--transition);
+}
+
+.masque-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.masque-card h4 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-1);
+}
+
+.masque-card-ethnie {
+  font-size: var(--xs);
+  color: var(--jaune);
+  font-weight: 600;
+  margin-bottom: var(--sp-3);
+}
+
+.masque-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-3);
+}
+
+.masque-card-materiau {
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--bg-alt);
+  border-radius: var(--radius-full);
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+/* ═══ ARTISANAT ═══ */
+.artisanat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .artisanat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .artisanat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.artisanat-card {
+  padding: var(--sp-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.artisanat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--rouge);
+}
+
+.artisanat-card h4 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-3);
+  color: var(--rouge);
+}
+
+.artisanat-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-3);
+}
+
+.artisanat-card-lieu {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ═══ GASTRONOMIE ═══ */
+.gastronomie-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 640px) {
+  .gastronomie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gastronomie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.nourriture-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+
+.nourriture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--vert);
+}
+
+.nourriture-card-img {
+  height: 160px;
+  overflow: hidden;
+}
+
+.nourriture-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.nourriture-card:hover .nourriture-card-img img {
+  transform: scale(1.1);
+}
+
+.nourriture-card-body {
+  padding: var(--sp-4);
+}
+
+.nourriture-card h4 {
+  font-size: var(--base);
+  margin-bottom: var(--sp-2);
+}
+
+.nourriture-card p {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sp-2);
+}
+
+.nourriture-card-type {
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-3);
+  background: var(--vert-light);
+  border-radius: var(--radius-full);
+  font-size: var(--xs);
+  color: var(--vert);
+}
+
+/* ═══ GALERIE ═══ */
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+
+@media (min-width: 640px) {
+  .galerie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .galerie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.galerie-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.galerie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.galerie-item:hover img {
+  transform: scale(1.1);
+}
+
+.galerie-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.galerie-item:hover .galerie-item-overlay {
+  opacity: 1;
+}
+
+.galerie-item-overlay span {
+  color: white;
+  font-size: var(--2xl);
+}
+
+/* ═══ COMMENTAIRES ═══ */
+.commentaires-form {
+  background: var(--bg-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  margin-bottom: var(--sp-8);
+}
+
+.commentaires-form h3 {
+  font-size: var(--lg);
+  margin-bottom: var(--sp-4);
+}
+
+.commentaires-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.commentaire-item {
+  padding: var(--sp-4);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.commentaire-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-2);
+}
+
+.commentaire-nom {
+  font-weight: 600;
+  font-size: var(--sm);
+}
+
+.commentaire-date {
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+.commentaire-text {
+  font-size: var(--sm);
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ═══ SIDEBAR ═══ */
+.region-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 1024px) {
+  .region-sidebar {
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+}
+
+/* Météo card */
+.meteo-card {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--vert-light) 100%);
+}
+
+.meteo-content {
+  text-align: center;
+  padding: var(--sp-4) 0;
+}
+
+.meteo-temp {
+  font-family: var(--font-titre);
+  font-size: var(--4xl);
+  font-weight: 800;
+  color: var(--vert);
+}
+
+.meteo-desc {
+  font-size: var(--sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.meteo-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+.meteo-detail {
+  text-align: center;
+}
+
+.meteo-detail-value {
+  display: block;
+  font-weight: 700;
+  font-size: var(--sm);
+  color: var(--text);
+}
+
+.meteo-detail-label {
+  font-size: var(--xs);
+  color: var(--text-muted);
+}
+
+.meteo-source {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: var(--sp-3);
+  font-style: italic;
+}
+
+/* Carte mini */
+.carte-mini {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carte-mini svg {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+}
+
+/* Nav card */
+.nav-card .btn {
+  font-size: var(--sm);
+}
+
+/* Voisins card */
+.voisins-card .voisin-item {
+  padding: var(--sp-3);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.voisins-card .voisin-item:hover {
+  background: var(--rouge-light);
+}
+
+.voisins-card .voisin-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.voisins-card .voisin-item-info h4 {
+  font-size: var(--sm);
+  margin-bottom: 2px;
+}
+
+.voisins-card .voisin-item-info p {
+  font-size: var(--xs);
+  color: var(--text-muted);
+  margin: 0;
+}
