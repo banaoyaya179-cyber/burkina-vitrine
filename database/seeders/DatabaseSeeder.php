@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RegionSeeder::class,
             RichesseSeeder::class,
-        ]);
+            GastronomieSeeder::class,
+      ]);
     }
 }

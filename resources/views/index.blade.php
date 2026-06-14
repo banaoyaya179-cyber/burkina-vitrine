@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/homepage-refresh.css">
 <base target="_blank">
 </head>
 <body>

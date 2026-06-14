@@ -42,7 +42,7 @@
             titre:     img.titre,
             region:    region.slug,
             regionNom: region.nom,
-            categorie: 'regions', // catégorie par défaut
+            categorie: 'regions',
           });
         });
 
@@ -60,10 +60,32 @@
             });
           }
         });
+
+        // Ajouter la gastronomie comme images supplémentaires
+        const gastronomie = region.gastronomie || [];
+        gastronomie.forEach(plat => {
+          if (plat.image) {
+            allImages.push({
+              src:       plat.image,
+              alt:       plat.nom,
+              titre:     plat.nom,
+              region:    region.slug,
+              regionNom: region.nom,
+              categorie: 'gastronomie',
+            });
+          }
+        });
+      });
+
+      // Supprimer les doublons (même image utilisée plusieurs fois)
+      const seen = new Set();
+      allImages = allImages.filter(img => {
+        if (seen.has(img.src)) return false;
+        seen.add(img.src);
+        return true;
       });
 
       filteredImages = [...allImages];
-
       populateRegionSelect();
       initFilters();
       initLightbox();

@@ -32,6 +32,7 @@
       renderProvinces();
       renderSites();
       renderRichesses();
+      renderGastronomie();
       renderCulture();
       renderGalerie();
       renderSidebar();
@@ -174,6 +175,34 @@
         `;
     }).join('');
  }
+ 
+ // ══════════════════════════════════════════
+// GASTRONOMIE
+// ══════════════════════════════════════════
+
+  function renderGastronomie() {
+    const r  = currentRegion;
+    const el = document.getElementById('nourriture-list');
+    if (!el || !r.gastronomie?.length) return;
+
+    el.innerHTML = r.gastronomie.map((g, i) => `
+        <div class="plat-card reveal" style="transition-delay:${i*80}ms">
+            <div class="plat-img">
+                <img src="/${g.image}" alt="${g.nom}" loading="lazy"
+                     onerror="this.src='/images/placeholder.jpg'">
+                <span class="plat-type">${g.type || ''}</span>
+            </div>
+            <div class="plat-body">
+                <h4>${g.nom}</h4>
+                <p>${g.description}</p>
+            </div>
+        </div>
+    `).join('');
+
+    set('sidebar-plats', r.gastronomie.length);
+  }
+ 
+ 
   // ══════════════════════════════════════════
   // CULTURE (festivals)
   // ══════════════════════════════════════════

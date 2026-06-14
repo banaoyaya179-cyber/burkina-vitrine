@@ -1,0 +1,236 @@
+/* ══════════════════════════════════════════
+   HOMEPAGE REFRESH — Identité Tiébélé / Sahel
+   À charger APRÈS index.css dans index.blade.php
+══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap');
+
+:root {
+  --indigo-nuit: #232042;
+  --terre: #C1502E;
+  --terre-hover: #A6431F;
+  --ocre: #D9A23B;
+  --sable: #F1E7D6;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--indigo-nuit);
+  min-height: 90vh;
+}
+
+.hero-bg {
+  opacity: 0.35;
+  filter: sepia(0.3) saturate(1.3) hue-rotate(-8deg) brightness(0.55);
+  transform: scale(1);
+  transition: none;
+}
+.hero:hover .hero-bg {
+  transform: scale(1);
+}
+
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(35,32,66,0.5) 0%, rgba(35,32,66,0.88) 100%);
+}
+
+#hero-particles {
+  display: none;
+}
+
+/* Eyebrow — repère typographique sobre, sans badge en verre */
+.hero-eyebrow {
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  padding: 0;
+  gap: var(--sp-3);
+  color: var(--ocre);
+  font-family: var(--font-corps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: var(--xs);
+  margin-bottom: var(--sp-5);
+}
+.hero-eyebrow .dot,
+.hero-eyebrow .flag-emoji {
+  display: none;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid var(--terre);
+}
+
+/* Titre — passage à une serif éditoriale */
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  letter-spacing: -0.01em;
+}
+
+.hero h1 .highlight {
+  color: var(--ocre);
+  font-style: italic;
+}
+.hero h1 .highlight::after {
+  height: 3px;
+  bottom: 6px;
+  background: var(--terre);
+  opacity: 0.7;
+  border-radius: 0;
+}
+
+.hero-description {
+  font-family: var(--font-corps);
+}
+
+/* CTA — terracotta au lieu de rouge pur */
+.hero-cta .btn-primary {
+  background: var(--terre);
+  border-color: var(--terre);
+}
+.hero-cta .btn-primary:hover {
+  background: var(--terre-hover);
+  border-color: var(--terre-hover);
+  box-shadow: 0 8px 24px rgba(193, 80, 46, 0.35);
+}
+
+/* Stats — chiffre + libellé en ligne, registre éditorial plutôt que widget */
+.hero-stats-mini {
+  border-top: none;
+  gap: var(--sp-8);
+  padding-top: var(--sp-5);
+  flex-wrap: wrap;
+}
+.hero-stat {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  text-align: left;
+}
+.hero-stat-number {
+  font-family: var(--font-corps);
+  font-size: var(--lg);
+  font-weight: 700;
+  color: var(--sable);
+}
+.hero-stat-label {
+  font-size: var(--xs);
+  color: rgba(241, 231, 214, 0.55);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.hero-stat-divider {
+  display: none;
+}
+
+/* Pied du hero — bandeau Tiébélé */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22px;
+  z-index: 3;
+}
+.hero::after {
+  background-image:
+    linear-gradient(135deg, var(--terre) 25%, transparent 25%),
+    linear-gradient(225deg, var(--terre) 25%, transparent 25%),
+    linear-gradient(45deg, var(--ocre) 25%, transparent 25%),
+    linear-gradient(315deg, var(--ocre) 25%, transparent 25%);
+  background-position: 0 0, 22px 0, 0 0, 22px 0;
+  background-size: 44px 22px;
+  background-repeat: repeat-x;
+  background-color: var(--sable);
+}
+
+/* ─── COMPTEURS — hover plus discret ─── */
+.compteur-item {
+  transition: border-color var(--transition);
+}
+.compteur-item:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--terre);
+}
+
+/* ─── CARTES RÉGION — hover plus discret ─── */
+.region-card {
+  transition: border-color var(--transition);
+}
+.region-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--terre);
+}
+.region-card-img img {
+  transition: transform 0.6s var(--ease);
+}
+
+/* ─── SECTION RÉFORME — bandeau Tiébélé au lieu du quadrillage de points ─── */
+.reforme-cta-section {
+  background: var(--indigo-nuit);
+}
+.reforme-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  height: 22px;
+  opacity: 1;
+  background-image:
+    linear-gradient(135deg, var(--terre) 25%, transparent 25%),
+    linear-gradient(225deg, var(--terre) 25%, transparent 25%),
+    linear-gradient(45deg, var(--ocre) 25%, transparent 25%),
+    linear-gradient(315deg, var(--ocre) 25%, transparent 25%);
+  background-position: 0 0, 22px 0, 0 0, 22px 0;
+  background-size: 44px 22px;
+  background-repeat: repeat-x;
+  background-color: var(--sable);
+}
+
+.reforme-cta-badge {
+  background: transparent;
+  border: 1px solid rgba(241, 231, 214, 0.25);
+  backdrop-filter: none;
+  color: var(--ocre);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  margin-top: var(--sp-4);
+}
+
+.reforme-cta-content h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+}
+
+.reforme-cta-stat-num {
+  font-family: 'Fraunces', serif;
+  color: var(--ocre);
+}
+
+.reforme-cta-arrow {
+  color: var(--terre);
+}
+
+.reforme-cta-content .btn-primary {
+  background: var(--terre);
+  border-color: var(--terre);
+  color: var(--sable);
+}
+.reforme-cta-content .btn-primary:hover {
+  background: var(--ocre);
+  border-color: var(--ocre);
+  color: var(--indigo-nuit);
+}

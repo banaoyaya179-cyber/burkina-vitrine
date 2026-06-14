@@ -22,7 +22,7 @@ class RegionController extends Controller
     public function show($slug)
     {
         $region = Region::where('slug', $slug)
-            ->with(['provinces','sites','festivals','galerie','richesses'])
+            ->with(['provinces','sites','festivals','galerie','richesses','gastronomie'])
             ->firstOrFail();
         return response()->json($region);
     }

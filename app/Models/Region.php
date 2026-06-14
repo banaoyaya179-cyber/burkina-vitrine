@@ -38,4 +38,8 @@ class Region extends Model
     public function richesses() {
     return $this->hasMany(Richesse::class);
     }
+    
+    public function gastronomie() {
+    return $this->hasMany(Gastronomie::class);
+    }
 }
